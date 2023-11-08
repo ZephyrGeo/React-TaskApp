@@ -1,14 +1,16 @@
-const SearchBar = ({ searchContent, setSearchContent }) => {
+const SearchBar = ({ query, onChange }) => {
   // typing时，禁用 add input typing, sumbitting, searching
-  // 搜索展示内容，需要提升组件状态
+
   return (
-    <input
-      type="text"
-      value={searchContent}
-      onChange={(e) => {
-        setSearchContent(e.target.value);
-      }}
-    />
+    <>
+      <span>Search: </span>
+      <input
+        className="border-solid border-2 h-10 bg-white shadow rounded font-mono"
+        type="text"
+        value={query}
+        onChange={onChange}
+      />
+    </>
   );
 };
 

@@ -11,20 +11,36 @@ const initialList = [
   { id: 2, text: "post something", done: false },
 ];
 
-const Todo = () => {
+const TaskApp = () => {
   const [tasks, dispatch] = useReducer(tasksReducer, initialList);
+
+  const [query, setQuery] = useState("");
+
+  const onChange = (e) => {
+    setQuery(e.target.value);
+  };
+  const filterTask = (tasks, query) => {
+    query = query.toLowerCase();
+    return tasks.filter((task) =>
+      task.text.split(" ").some((word) => word.toLowerCase().startsWith(query))
+    );
+  };
+
+  const results = filterTask(tasks, query);
 
   return (
     <>
-      {/* <SearchBar
-        searchContent={searchContent}
-        setSearchContent={setSearchContent}
-      /> */}
+      <SearchBar dispatch={dispatch} />
       <AddTask dispatch={dispatch} />
-      <TaskList tasks={tasks} dispatch={dispatch} />
+      <TaskList
+        tasks={results}
+        query={query}
+        onChange={onChange}
+        dispatch={dispatch}
+      />
       <ShowListState tasks={tasks} />
     </>
   );
 };
 
-export default Todo;
+export default TaskApp;
