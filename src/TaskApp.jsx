@@ -30,14 +30,9 @@ const TaskApp = () => {
 
   return (
     <>
-      <SearchBar dispatch={dispatch} />
+      <SearchBar dispatch={dispatch} query={query} onChange={onChange} />
       <AddTask dispatch={dispatch} />
-      <TaskList
-        tasks={results}
-        query={query}
-        onChange={onChange}
-        dispatch={dispatch}
-      />
+      <TaskList tasks={results} dispatch={dispatch} />
       <ShowListState tasks={tasks} />
     </>
   );

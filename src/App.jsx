@@ -1,8 +1,10 @@
 import TaskApp from "./TaskApp";
 function App() {
   return (
-    <div>
-      <TaskApp />
+    <div className="flex justify-center items-center ">
+      <div>
+        <TaskApp />
+      </div>
     </div>
   );
 }
