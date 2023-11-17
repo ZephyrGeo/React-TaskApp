@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { TasksDispatchContext } from "./TasksContext";
 
-let nextId = 3;
-const AddTask = ({ dispatch }) => {
+const AddTask = () => {
   const [text, setText] = useState("");
+  const dispatch = useContext(TasksDispatchContext);
 
   // add todo
   const handleAddTask = () => {
@@ -47,3 +49,5 @@ const AddTask = ({ dispatch }) => {
 };
 
 export default AddTask;
+
+let nextId = 3;

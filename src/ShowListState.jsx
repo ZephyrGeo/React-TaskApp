@@ -1,4 +1,8 @@
-const ShowListState = ({ tasks }) => {
+import { useContext } from "react";
+import { TasksContext } from "./TasksContext.jsx";
+
+const ShowListState = () => {
+  const tasks = useContext(TasksContext);
   const total = tasks.length;
   const done = tasks.filter((t) => t.done === true).length;
   const rest = tasks.filter((t) => t.done === false).length;

@@ -1,6 +1,18 @@
-const SearchBar = ({ query, onChange }) => {
-  // typing时，禁用 add input typing, sumbitting, searching
+import { useState } from "react";
+const SearchBar = () => {
+  const [query, setQuery] = useState("");
 
+  const onChange = (e) => {
+    setQuery(e.target.value);
+  };
+  const filterTask = (tasks, query) => {
+    query = query.toLowerCase();
+    return tasks.filter((task) =>
+      task.text.split(" ").some((word) => word.toLowerCase().startsWith(query))
+    );
+  };
+
+  const results = filterTask(tasks, query);
   return (
     <div>
       <span>Search: </span>
